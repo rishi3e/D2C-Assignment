@@ -61,7 +61,7 @@
     </div>
 
     <div *ngIf="showEntryForm" class="container">
-        <h3>Dear Passenger, Yoo currently have {{isInputValid}} reserve seats, can book tickets upto
+        <h3>Dear Passenger, You currently have {{isInputValid}} reserve seats, can book tickets upto
             {{isInputValid}}
         </h3>
         <form class="pb-2" [formGroup]="passengerDetails" (ngSubmit)="bookingEntry()">
