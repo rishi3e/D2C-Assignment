@@ -1,0 +1,40 @@
+{
+  "passenger-details": [
+    {
+      "id": 1,
+      "firstname": "sdfag",
+      "lastname": "dfdfg",
+      "email": "asgf@dsgf.cdd",
+      "gender": "other",
+      "aadharnumber": "200000000001",
+      "mobilenumber": "1111111111"
+    },
+    {
+      "id": 3,
+      "firstname": "sdfag",
+      "lastname": "dfdfg",
+      "email": "asgf@dsgf.cdd",
+      "gender": "other",
+      "aadharnumber": "200055000003",
+      "mobilenumber": "1111111111"
+    },
+    {
+      "id": 5,
+      "firstname": "sdfag",
+      "lastname": "dfdfg",
+      "email": "asgf@dsgf.cdd",
+      "gender": "other",
+      "aadharnumber": "200000004461",
+      "mobilenumber": "1111111111"
+    },
+    {
+      "id": 9,
+      "firstname": "sdfag",
+      "lastname": "dfdfg",
+      "email": "asgf@dsgf.cdd",
+      "gender": "other",
+      "aadharnumber": "200055880003",
+      "mobilenumber": "1111111111"
+    }
+  ]
+}
