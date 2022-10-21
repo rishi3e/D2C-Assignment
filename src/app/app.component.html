@@ -1,0 +1,35 @@
+<nav class="navbar navbar1 navbar-dark bg-dark" style="color: white">
+    <h1>Welcome to Rishi's Rail Reservation Portal</h1>
+</nav>
+
+<nav class="navbar navbar2 navbar-expand-lg" style="background-color: #e3f2fd">
+
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="booktickets">Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="aboutrishi">About Rishi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="projectassumptions">Project's Assumptions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="router">
+    <router-outlet></router-outlet>
+</div>
+
+<footer>
+    <p class="footer">Created By Rishi Gaur | All Rights Reserved.</p>
+</footer>

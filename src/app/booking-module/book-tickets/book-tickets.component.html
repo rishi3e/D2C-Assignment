@@ -1,0 +1,149 @@
+<div class="sidebar">
+    <a (click)="getTotalSeats()">Total Seats</a>
+    <a (click)="getPassengerBookingDetails()">Already Booked Seats</a>
+    <a (click)="getBookingEntryDetails()">For Booking Tickets </a>
+    <a (click)="cancelBooking()">Cancel Booking</a>
+</div>
+
+<div class="content">
+
+    <div *ngIf="totalSeatsShow">
+        <h3>Total Seats:{{totalSeats}}, Available Seats: {{availableSeatsInCoach}}</h3>
+
+        <table class="container table">
+            <thead>
+                <tr>
+                    <th scope="col">Row</th>
+                    <th scope="col">Seat A</th>
+                    <th scope="col">Seat B</th>
+                    <th scope="col">Seat C</th>
+                    <th scope="col">Seat D</th>
+                    <th scope="col">Seat E</th>
+                    <th scope="col">Seat F</th>
+                    <th scope="col">Seat G</th>
+                </tr>
+                <tr *ngFor="let passenger of seatsArray; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td *ngFor="let cell of passenger">{{cell}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div *ngIf="alreadyBookSeats">
+        <h3>Total Booked Seats: {{passengerBookigDetailsLength}}, Available Seats: {{availableSeatsInCoach}}</h3>
+        <table class="container table">
+            <thead>
+                <tr>
+                    <th scope="col">Seat</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Gender</th>
+                </tr>
+                <tr *ngFor="let passenger of passengerBookigDetails">
+                    <td>{{passenger.id}}</td>
+                    <td>{{passenger.firstname}}</td>
+                    <td>{{passenger.lastname}}</td>
+                    <td>{{passenger.gender}}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div *ngIf="showReserveNumber">
+        <h3>Enter Number of Tickets you want to Book</h3>
+        <h6>You can reserve seats upto 7 only</h6>
+        <input type="number" id="isInputValid" name="isInputValid" min="1" max="7" (keyup)="validateReserveCount()"
+            [(ngModel)]="isInputValid" pattern="[1-7]{1}" maxlength="1" placeholder="Seats">
+        <br><br>
+        <button type="button" class="btn btn-secondary" [disabled]="!isCountValid"
+            (click)="validCountAndFillForm()">Submit</button>
+    </div>
+
+    <div *ngIf="showEntryForm" class="container">
+        <h3>Dear Passenger, Yoo currently have {{isInputValid}} reserve seats, can book tickets upto
+            {{isInputValid}}
+        </h3>
+        <form class="pb-2" [formGroup]="passengerDetails" (ngSubmit)="bookingEntry()">
+            <div class="mb-3">
+                <label for="aadharnumber" class="form-label">Aadhar Number</label>
+                <input type="text" class="form-control" id="aadharnumber" formControlName="aadharnumber">
+            </div>
+            <div class="mb-3">
+                <label for="firstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="fisrtname" formControlName="firstname">
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastname" formControlName="lastname">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <div id="emailHelp" class="form-text">We'll never share your Email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="mobilenumber" class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" id="mobilenumber" formControlName="mobilenumber">
+                <div id="emailHelp" class="form-text">We'll never share your Mobile Number with anyone else.</div>
+            </div>
+            <div>
+                <label for="gender" class="form-label">Gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                        formControlName="gender">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                        formControlName="gender">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="other" value="other"
+                        formControlName="gender">
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!passengerDetails.valid">Submit</button>
+        </form>
+    </div>
+
+    <div *ngIf="cancelBookingAadhar">
+        <div>
+            <h3>Enter Aadhar Number</h3>
+            <input type="text" id="isAadharNumber" name="isAadharNumber" min="12" max="12" [(ngModel)]="isAadharNumber"
+                pattern="[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}" placeholder="Aadhar">
+
+            <br><br>
+            <button type="button" class="btn btn-secondary" (click)="searchPassenger()">Search</button>
+        </div>
+        <br>
+        <div *ngIf="searchedPassengerDetailToCancel">
+            <table class="container table">
+                <thead>
+                    <tr>
+                        <th scope="col">Aadhar Number</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Cancel Booking</th>
+                    </tr>
+                    <tr>
+                        <td>{{searchPassengerAadharNumber}}</td>
+                        <td>{{searchPassengerFirstName}}</td>
+                        <td>{{searchPassengerLastName}}</td>
+                        <td>{{searchPassengerEmail}}</td>
+                        <td>{{searchPassengerMobile}}</td>
+                        <td>{{searchPassengerGender}}</td>
+                        <td><button type="button" class="btn btn-primary"
+                                (click)="deletePassengerBooking()">Cancel</button>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
