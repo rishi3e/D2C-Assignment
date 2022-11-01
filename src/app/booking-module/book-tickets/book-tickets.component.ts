@@ -214,7 +214,7 @@ export class BookTicketsComponent implements OnInit {
             break;
           case 10: id ? this.seatsArray[1][2] = 'Reserved' : this.seatsArray[1][2] = 'Empty';
             break;
-            case11: id ? this.seatsArray[1][3] = 'Reserved' : this.seatsArray[1][3] = 'Empty';
+          case 11: id ? this.seatsArray[1][3] = 'Reserved' : this.seatsArray[1][3] = 'Empty';
             break;
           case 12: id ? this.seatsArray[1][4] = 'Reserved' : this.seatsArray[1][4] = 'Empty';
             break;
