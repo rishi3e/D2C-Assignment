@@ -17,7 +17,7 @@ export class BookTicketsComponent implements OnInit {
   constructor(formBuilder: FormBuilder, private router: Router, public bookingService: BookingService) {
 
     this.passengerDetails = formBuilder.group({
-      aadharnumber: ['', [Validators.required, Validators.pattern('^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$')]],
+      aadharnumber: ['', [Validators.required, Validators.pattern('^[2-8]{1}[0-9]{3}[0-9]{4}[0-9]{4}$')]],
       firstname: ['', [Validators.required, Validators.minLength(3)]],
       lastname: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
